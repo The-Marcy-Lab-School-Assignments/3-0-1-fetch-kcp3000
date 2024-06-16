@@ -1,5 +1,7 @@
+import { positionToOffset } from "vitest/utils.js";
+
 export const setupPageBasics = (parentEl) => {
-    parentEl.innerHTML = `
+  parentEl.innerHTML = `
       <h1>Intro To Fetch!</h1>
       <div id='status'></div>
       <div id='users'>
@@ -21,23 +23,71 @@ export const setupPageBasics = (parentEl) => {
       <div id='new-user'></div>
     `;
 
-    const statusDiv = parentEl.querySelector('#status');
-    const usersUl = parentEl.querySelector('#users-list');
-    const postsUl = parentEl.querySelector('#posts-list');
-    const newUserForm = parentEl.querySelector('#new-user-form');
-    const newUserDiv = parentEl.querySelector('#new-user');
+  const statusDiv = parentEl.querySelector('#status');
+  const usersUl = parentEl.querySelector('#users-list');
+  const postsUl = parentEl.querySelector('#posts-list');
+  const newUserForm = parentEl.querySelector('#new-user-form');
+  const newUserDiv = parentEl.querySelector('#new-user');
 
-    return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
+  return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
 };
 
-export const renderStatus = () => {
-}
+export const renderStatus = (statusInfoObj, statusDiv) => {
+  const h2Tag = document.createElement('h2')
+  h2Tag.setAttribute('id', 'status-heading')
+  h2Tag.textContent = `Info on - ${statusInfoObj.url}`
 
-export const renderUsers = () => {
+  const pTag = document.createElement('p')
+  pTag.setAttribute('id', 'status-code')
+
+  if (statusInfoObj.ok) {
+    pTag.textContent = `Status code: ${statusInfoObj.status}, OK!`
+  } else {
+    pTag.textContent = `Status code: ${statusInfoObj.status}, FAIL!`
+  }
+  statusDiv.append(h2Tag, pTag); //test is saying this isn't correct but for the life of me i can't figure out what's wrong with it
 };
 
-export const renderPosts = () => {
+export const renderUsers = (userUl, users) => {
+  userUl.innerHTML = ''
+  users.forEach((user) => {
+    const list = document.createElement('li')
+    list.setAttribute('class', 'user-card')
+
+    const button = document.createElement('button')
+    button.setAttribute('data-user-id', `${user.id}`)
+    button.textContent = `Load ${user.username}'s posts`
+
+    list.append(button)
+    userUl.append(list)
+
+  })
+
+};
+
+export const renderPosts = (postsUl, posts) => {
+  postsUl.innerHTML = ''
+  const list = document.createElement('li')
+  posts.forEach((post) => {
+    // const list = document.createElement('li')
+    const h2 = document.createElement('h2')
+    const p = document.createElement('p')
+
+    h2.textContent = `${post.title}`
+    p.textContent = `${post.body}`
+
+    list.append(h2, p)
+    postsUl.append(list)
+
+  })//i think i broke it
 }
 
-export const renderNewUser = () => {
-}
+export const renderNewUser = (newUserDiv, newUserInfo) => {
+  const h2Tag = document.createElement('h2')
+  h2Tag.textContent = `${newUserInfo.username}`
+
+  const pTag = document.createElement('p')
+  pTag.textContent = `${newUserInfo.email}`
+
+  newUserDiv.append(h2Tag, pTag)
+};
