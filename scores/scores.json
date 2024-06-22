@@ -52,7 +52,7 @@
       "ReFuTe4": 1,
       "ReFuTe5": 0,
       "ReFuTe6": 0,
-      "ReFuTe7": 0,
+      "ReFuTe7": 1,
       "ReFuTe8": 0
     },
     "Fetch Function Tests": {
@@ -73,8 +73,8 @@
     }
   },
   "humanReadable": {
-    "Render Functions Tests": "2/8",
-    "finalTestScore": "FINAL SCORE: 10/20",
+    "Render Functions Tests": "3/8",
+    "finalTestScore": "FINAL SCORE: 11/20",
     "Fetch Function Tests": "8/8",
     "App Tests": "0/4"
   }
