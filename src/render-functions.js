@@ -31,7 +31,7 @@ export const setupPageBasics = (parentEl) => {
 
   return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
 };
-/** FEEDBACK: Switch statusDiv and statusInfoObj so that when the tests use it, it doesn't get an error! */
+/** FEEDBACK: Great job! */
 export const renderStatus = (statusDiv, statusInfoObj) => {
   const h2Tag = document.createElement('h2')
   h2Tag.setAttribute('id', 'status-heading')
