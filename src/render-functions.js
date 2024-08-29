@@ -33,7 +33,7 @@ export const setupPageBasics = (parentEl) => {
   return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
 };
 /** FEEDBACK: Switch statusDiv and statusInfoObj so that when the tests use it, it doesn't get an error! */
-export const renderStatus = (statusInfoObj, statusDiv) => {
+export const renderStatus = (statusDiv, statusInfoObj) => {
   const h2Tag = document.createElement('h2')
   h2Tag.setAttribute('id', 'status-heading')
   h2Tag.textContent = `Info on - ${statusInfoObj.url}`
@@ -69,9 +69,9 @@ export const renderUsers = (userUl, users) => {
 export const renderPosts = (postsUl, posts) => {
   postsUl.innerHTML = ''
   /** FEEDBACK: This list item should be inside of the forEach loop! */
-  const list = document.createElement('li')
+  // const list = document.createElement('li')
   posts.forEach((post) => {
-    // const list = document.createElement('li')
+    const list = document.createElement('li')
     const h2 = document.createElement('h2')
     const p = document.createElement('p')
 
@@ -86,6 +86,9 @@ export const renderPosts = (postsUl, posts) => {
 
 export const renderNewUser = (newUserDiv, newUserInfo) => {
   /** FEEDBACK: You may need to clear out the newUserDiv before appending elements to it! */
+
+  newUserDiv.innerHTML = ''
+
   const h2Tag = document.createElement('h2')
   h2Tag.textContent = `${newUserInfo.username}`
 
