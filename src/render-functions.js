@@ -1,4 +1,3 @@
-/** FEEDBACK: This import is causing some tests from this page to fail! */
 // import { positionToOffset } from "vitest/utils.js";
 
 export const setupPageBasics = (parentEl) => {
